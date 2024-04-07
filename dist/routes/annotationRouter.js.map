@@ -1,0 +1,1 @@
+{"version":3,"file":"annotationRouter.js","sourceRoot":"","sources":["../../src/routes/annotationRouter.ts"],"names":[],"mappings":";;AAAA,qCAAiC;AAGjC,6DAA8D;AAG9D,gFAG8C;AAE9C,MAAM,gBAAgB,GAAW,IAAA,gBAAM,GAAE,CAAC;AAE1C,gBAAgB,CAAC,IAAI,CAAC,UAAU,EAAE,+BAAgB,EAAE,gDAAwB,CAAC,CAAC;AAE9E,gBAAgB,CAAC,GAAG,CAAC,UAAU,EAAE,+BAAgB,EAAE,8CAAsB,CAAC,CAAC;AAE3E,kBAAe,gBAAgB,CAAC"}
