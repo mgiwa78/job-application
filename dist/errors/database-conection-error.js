@@ -7,7 +7,6 @@ class DatabaseConnectionError extends custom_error_1.CustomError {
         super("Error Connecting to database");
         this.statusCode = 500;
         this.reason = "Error Connecting to database";
-        //Only to extend a built in class
         Object.setPrototypeOf(this, DatabaseConnectionError.prototype);
     }
     serializeErrors() {

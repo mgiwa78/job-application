@@ -9,28 +9,14 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const NotificationSchema = new mongoose_1.default.Schema({
     title: {
         type: String,
-        required: true
     },
-    message: {
+    body: {
         type: String,
-        required: true
-    },
-    color: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: Boolean,
-        default: false
-    },
-    linkType: {
-        type: String,
-        required: true
     },
     user: {
         type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: "User"
-    }
+        ref: "User",
+    },
 });
 NotificationSchema.set("timestamps", true);
 const Notification = (((_a = mongoose_1.default.models) === null || _a === void 0 ? void 0 : _a.Notification) ||

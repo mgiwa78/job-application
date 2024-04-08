@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { Post, TPostDoc } from "../models/post";
 import { User } from "../models/user";
-import { Notification } from "../models/notification";
-import { notifyNewLike, notifyNewPostByFollowedUser } from "../app";
-import { notifyNewPostLike } from "../services/notifications";
+import {
+  notifyNewPostByFollowedUser,
+  notifyNewPostLike,
+} from "../services/notifications";
 
 // Create new post
 export const Create__POST__POST = async (req: Request, res: Response) => {
@@ -16,11 +17,12 @@ export const Create__POST__POST = async (req: Request, res: Response) => {
     });
     post.save();
 
-    const postData = await Post.findById(post._id).populate("author");
+    const user = await User.findById(req.user.id);
 
-    notifyNewPostByFollowedUser(req.user.id, postData);
+    user.followers.forEach((follower) => {
+      notifyNewPostByFollowedUser(user, follower);
+    });
 
-    console.log(post);
     return res.json({ status: "success", data: post });
   } catch (error) {
     res.status(500).json({ status: "error", error: error.message });

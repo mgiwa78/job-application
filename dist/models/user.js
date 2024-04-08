@@ -23,36 +23,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = exports.Department = void 0;
+exports.User = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const departmentSchema = new mongoose_1.default.Schema({
-    name: { type: String, required: true }
-});
-departmentSchema.set("timestamps", true);
-exports.Department = mongoose_1.default.model("department", departmentSchema);
 const userSchema = new mongoose_1.default.Schema({
-    firstName: { type: String, required: true },
-    contactNumber: { type: String, required: true },
-    avatar: { type: String },
-    notification: {
-        type: { email: Boolean },
-        required: true,
-        default: { email: false }
-    },
-    lastName: { type: String, required: true },
-    studentId: { type: String },
-    email: { type: String, required: true, unique: true },
+    fullName: { type: String, required: true },
+    userName: { type: String, required: true },
     password: { type: String, required: true },
-    supervisor: {
-        type: mongoose_1.default.Schema.Types.ObjectId,
-        required: true,
-        ref: "User"
-    },
-    department: {
-        type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: "Department"
-    },
-    roles: [{ type: mongoose_1.default.Schema.Types.ObjectId, ref: "Role", required: true }]
+    email: { type: String, required: true },
+    followers: [
+        {
+            type: mongoose_1.default.Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
+    avatar: { type: String },
 });
 userSchema.set("timestamps", true);
 exports.User = (mongoose_1.default.models.User ||

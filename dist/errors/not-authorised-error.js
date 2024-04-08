@@ -6,7 +6,6 @@ class NotAuthorisedError extends custom_error_1.CustomError {
     constructor() {
         super("You are not authorised");
         this.statusCode = 401;
-        //Only to extend a built in class
         Object.setPrototypeOf(this, NotAuthorisedError.prototype);
     }
     serializeErrors() {

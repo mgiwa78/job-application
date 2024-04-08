@@ -70,3 +70,19 @@ export async function notifyNewFollower(
   });
   sendPushNotificationToUser(followedUserId, notification);
 }
+export async function notifyNewPostByFollowedUser(
+  postAuthor: TUserDoc,
+  followerID: string
+) {
+  const notification = {
+    type: "newPost",
+    message: `${postAuthor.userName} Created a new post`,
+  };
+
+  await Notification.create({
+    title: "New Post Notification",
+    body: `${postAuthor.userName} Created a new post `,
+    user: followerID,
+  });
+  sendPushNotificationToUser(followerID, notification);
+}

@@ -9,6 +9,7 @@ const ValidateRequest = (req, res, next) => {
             message: error.msg,
             field: error === null || error === void 0 ? void 0 : error.path
         }));
+        console.log(validationErrors);
         return res.status(400).json({ status: "error", errors: validationErrors });
     }
     next();

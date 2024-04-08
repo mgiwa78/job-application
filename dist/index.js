@@ -16,7 +16,7 @@ require("dotenv/config");
 const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = require("./app");
 const __CONSTANTS__1 = require("./__CONSTANTS__");
-const port = 6001;
+const port = 9001;
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!process.env.JWT_KEY) {
         throw new Error("jwt key dose not exist");

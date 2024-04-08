@@ -26,37 +26,6 @@ app.use(json());
 
 app.use(rootRouter);
 
-export function notifyNewFollower(
-  followedUserId: string,
-  followerName: string
-) {
-  const notification = {
-    type: "newFollower",
-    message: `You have a new follower: ${followerName}`,
-  };
-  sendPushNotificationToUser(followedUserId, notification);
-}
-
-// New comment on the user's post notification
-
-// New like on the user's post notification
-export function notifyNewLike(postCreatorId: string, likerName: string) {
-  const notification = {
-    type: "newLike",
-    message: `${likerName} liked your post`,
-  };
-  sendPushNotificationToUser(postCreatorId, notification);
-}
-
-// New post by followed user notification
-export function notifyNewPostByFollowedUser(userId: string, post: TPostDoc) {
-  const notification = {
-    type: "newPostByFollowedUser",
-    message: `New post by ${post.author}: ${post.body}`,
-  };
-  sendPushNotificationToUser(userId, notification);
-}
-
 const server = http.createServer(app);
 const io = socketIo(server);
 const connectedUsers: any = {};
@@ -67,6 +36,7 @@ export function sendPushNotificationToUser(userId: string, notification: any) {
     io.to(socketId).emit("notification", notification);
   }
 }
+
 io.on("connection", (socket: Socket) => {
   // Event fired when a user connects
   socket.on("userConnected", (userId) => {

@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { Comment, TCommentDoc } from "../models/comment";
-import { Notification } from "../models/notification";
-import { notifyNewLike } from "../app";
+
 import { Post } from "../models/post";
 import { User } from "../models/user";
 import {
